@@ -1,0 +1,167 @@
+/* ========== Soft Modern Theme (light + dark) ========== */
+:root {
+  --bg: #f7f9fc;
+  --text: #1f2937;
+  --muted: #64748b;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --brand: #2563eb;   /* primary */
+  --brand-2: #7c3aed; /* accent */
+  --ring: rgba(37, 99, 235, 0.35);
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --text: #e5e7eb;
+    --muted: #9aa4b2;
+    --surface: #101829;
+    --surface-2: #0f172a;
+    --brand: #60a5fa;
+    --brand-2: #a78bfa;
+    --ring: rgba(96, 165, 250, 0.35);
+    --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* Base */
+html { scroll-behavior: smooth; }
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+a { color: var(--brand); }
+a:hover { text-decoration: none; filter: brightness(1.05); }
+
+/* Headings */
+h1, h2, h3, .display-4 {
+  letter-spacing: 0.2px;
+  color: var(--text);
+}
+h2 { font-weight: 700; }
+
+/* Navbar (keeps .navbar-dark structure) */
+.navbar-dark {
+  background: linear-gradient(180deg, rgba(2,6,23,.85), rgba(2,6,23,.65));
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.navbar-dark .navbar-brand {
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+.navbar-dark .navbar-nav .nav-link {
+  position: relative;
+  transition: color .25s, transform .2s;
+  padding: .5rem .75rem;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: var(--brand);
+  transform: translateY(-1px);
+}
+.navbar-dark .navbar-nav .nav-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+  border-radius: 10px;
+}
+
+/* Hero (replaces jumbotron look) */
+.jumbotron {
+  background: radial-gradient(1200px 500px at 10% -10%, var(--brand), transparent),
+              radial-gradient(1200px 500px at 90% 0%, var(--brand-2), transparent),
+              linear-gradient(90deg, var(--surface), var(--surface-2));
+  color: var(--text);
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  padding: 3rem 1rem;
+}
+.jumbotron .display-4 {
+  font-weight: 800;
+}
+.jumbotron p {
+  opacity: .95;
+}
+
+/* Sections */
+section {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+section .text-center + p.lead { max-width: 72ch; margin-left: auto; margin-right: auto; }
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(2,6,23,0.06);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover { transform: translateY(-2px); }
+.card-title { font-weight: 700; }
+
+/* List group */
+.list-group-item {
+  background: var(--surface);
+  border-color: rgba(2,6,23,0.06);
+  color: var(--text);
+}
+.list-group-item + .list-group-item { border-top-color: rgba(2,6,23,0.08); }
+
+/* Buttons (Bootstrap overrides kept subtle) */
+.btn {
+  border-radius: 10px;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border: none;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+}
+.btn-primary:hover { filter: brightness(1.04); }
+
+.btn-outline-primary {
+  color: var(--brand);
+  border-color: var(--brand);
+}
+.btn-outline-primary:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* Badges */
+.badge-secondary {
+  background: linear-gradient(135deg, var(--surface-2), var(--surface));
+  color: var(--muted);
+  border: 1px solid rgba(2,6,23,0.08);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(180deg, var(--surface-2), rgba(0,0,0,0));
+  color: var(--muted);
+  border-top: 1px solid rgba(2,6,23,0.08);
+}
+
+/* Focus Ring (accessibility) */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring) !important;
+  border-radius: 10px;
+}
+
+/* Utilities */
+.shadow-soft { box-shadow: var(--shadow) !important; }
+.rounded-xl { border-radius: var(--radius) !important; }
+
+/* Optional: roomy container for wide screens */
+@media (min-width: 1200px) {
+  .container { max-width: 1100px; }
+}
